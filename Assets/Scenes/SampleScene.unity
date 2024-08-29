@@ -377,6 +377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 287453551}
   - component: {fileID: 287453552}
+  - component: {fileID: 287453553}
   m_Layer: 5
   m_Name: Slider (1)
   m_TagString: Untagged
@@ -456,19 +457,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 811157845}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SetBackgroundVolume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &287453553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287453550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afda5f87b5f7746a6878b5a3d7cfef22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &358283896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,6 +1358,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mixer: {fileID: 24300002, guid: 1ce8f6b1ad85a451d8b81ec7473a34fd, type: 2}
+  _masterSlider: {fileID: 2099569879}
+  _effectsSlider: {fileID: 982361226}
+  _backgroundSlider: {fileID: 287453553}
 --- !u!1 &820889254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1779,6 +1783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 982361224}
   - component: {fileID: 982361225}
+  - component: {fileID: 982361226}
   m_Layer: 5
   m_Name: Slider (2)
   m_TagString: Untagged
@@ -1858,19 +1863,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 811157845}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SetEffectsVolume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &982361226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982361223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afda5f87b5f7746a6878b5a3d7cfef22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1093871636
 GameObject:
   m_ObjectHideFlags: 0
@@ -3420,6 +3425,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2099569876}
   - component: {fileID: 2099569877}
+  - component: {fileID: 2099569879}
+  - component: {fileID: 2099569878}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -3499,19 +3506,31 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 811157845}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SetTotalVolume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &2099569878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099569875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afda5f87b5f7746a6878b5a3d7cfef22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2099569879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099569875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afda5f87b5f7746a6878b5a3d7cfef22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2123931991
 GameObject:
   m_ObjectHideFlags: 0
