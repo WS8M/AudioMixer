@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -20,16 +19,16 @@ public class AudioManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _masterSlider.VolumeChanged += SetTotalVolume;
-        _effectsSlider.VolumeChanged += SetEffectsVolume;
-        _backgroundSlider.VolumeChanged += SetBackgroundVolume;
+        _masterSlider.Changed += SetVolume;
+        _effectsSlider.Changed += SetVolume;
+        _backgroundSlider.Changed += SetVolume;
     }
 
     private void OnDisable()
     {
-        _masterSlider.VolumeChanged -= SetTotalVolume;
-        _effectsSlider.VolumeChanged -= SetEffectsVolume;
-        _backgroundSlider.VolumeChanged -= SetBackgroundVolume;
+        _masterSlider.Changed -= SetVolume;
+        _effectsSlider.Changed -= SetVolume;
+        _backgroundSlider.Changed -= SetVolume;
     }
 
     private void Awake()
@@ -37,9 +36,9 @@ public class AudioManager : MonoBehaviour
         _isEnabled = true;
         _currentTotalVolume = 1;
         
-        SetTotalVolume(1);
-        SetBackgroundVolume(1);
-        SetEffectsVolume(1);
+        _masterSlider.Init(MasterVolume);
+        _effectsSlider.Init(EffectsVolume);
+        _backgroundSlider.Init(BackgroundVolume);
     }
     
     public void SetMute()
@@ -49,23 +48,16 @@ public class AudioManager : MonoBehaviour
         else
             TurnOnAudion();
     }
-    
-    private void SetTotalVolume(float value)
-    {
-        _currentTotalVolume = value;
-        
-        if(_isEnabled)
-            SetVolume(MasterVolume, value);
-    } 
-
-    private void SetEffectsVolume(float value) => 
-        SetVolume(EffectsVolume, value);
-    
-    private void SetBackgroundVolume(float value) => 
-        SetVolume(BackgroundVolume, value);
 
     private void SetVolume(string parameterName, float value)
     {
+        if (parameterName == MasterVolume)
+        {
+            _currentTotalVolume = value;
+            if (_isEnabled == false)
+                return;
+        }
+        
         value = value < MinVolumeValue ? MinVolumeValue : value;
         value = Mathf.Log10(value) * 20;
         _mixer.audioMixer.SetFloat(parameterName, value);
@@ -74,7 +66,7 @@ public class AudioManager : MonoBehaviour
     private void TurnOnAudion()
     {
         _isEnabled = true;
-        SetTotalVolume(_currentTotalVolume);
+        SetVolume(MasterVolume, _currentTotalVolume);
     }
     
     private void TurnOffAudio()

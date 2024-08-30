@@ -6,16 +6,26 @@ using UnityEngine.UI;
 public class VolumeSlider : MonoBehaviour
 {
     private Slider _slider;
+    private string _mixerParameterName;
+    public event Action<string,float> Changed;
 
-    public event Action<float> VolumeChanged;
-    private void Awake()
+    public void Init(string mixerParameterName, float volume = 1)
     {
         _slider = GetComponent<Slider>();
         _slider.onValueChanged.AddListener(OnValueChanged);
-    }
+        
+        if (String.IsNullOrWhiteSpace(mixerParameterName))
+            throw new NullReferenceException();
 
+        _mixerParameterName = mixerParameterName;
+        _slider.value = volume;
+    }
+    
+    private void OnDisable() => 
+        _slider.onValueChanged.RemoveListener(OnValueChanged);
+    
     private void OnValueChanged(float value)
     {
-        VolumeChanged?.Invoke(value);
+        Changed?.Invoke(_mixerParameterName, value);
     }
 }
