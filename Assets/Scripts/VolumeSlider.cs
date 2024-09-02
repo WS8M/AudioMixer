@@ -11,16 +11,19 @@ public class VolumeSlider : MonoBehaviour
 
     public void Init(string mixerParameterName, float volume = 1)
     {
-        _slider = GetComponent<Slider>();
-        _slider.onValueChanged.AddListener(OnValueChanged);
-        
         if (String.IsNullOrWhiteSpace(mixerParameterName))
             throw new NullReferenceException();
 
         _mixerParameterName = mixerParameterName;
         _slider.value = volume;
     }
-    
+
+    private void OnEnable()
+    {
+        _slider = GetComponent<Slider>();
+        _slider.onValueChanged.AddListener(OnValueChanged);
+    }
+
     private void OnDisable() => 
         _slider.onValueChanged.RemoveListener(OnValueChanged);
     

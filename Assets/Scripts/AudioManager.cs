@@ -31,7 +31,7 @@ public class AudioManager : MonoBehaviour
         _backgroundSlider.Changed -= SetVolume;
     }
 
-    private void Awake()
+    private void Start()
     {
         _isEnabled = true;
         _currentTotalVolume = 1;
